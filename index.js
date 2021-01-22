@@ -219,8 +219,8 @@ Practice accessing data above by console.log-ing following items:
 (no function needed) 
 There is a typo in your dataset 😱 The 9th artist, Vincent Van Gogh is currently Vincent Van Dough. Use an array method to fix this issue and console.log() to check your work. */
 
-artists[8].name= "Vincent Van Gogh";
-console.log(artists[8]);
+// artists[8].name= "Vincent Van Gogh";
+// console.log(artists[8]);
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀  
  Use getArtistByIndex to do the following:
@@ -267,8 +267,9 @@ console.log(get20s(artists));
  
  For example, if removeArtist is invoked with the artists array and the number 0, it will remove Amedeo Modigliani from our dataset and return the number 19. */
 
-function removeArtist(/*Your Code Here*/){
-   /*Your Code Here*/
+function removeArtist(array, index){
+    array.splice(index, 1);
+    return array.length;
 }
    
 
@@ -288,8 +289,16 @@ Use addArtist to do the following:
 
 Example: addArtist(artists) should return the artists array with the above object added to the end of the array. */
 
-function addArtist(/*Your Code Here*/){
-    /*Your Code Here*/
+function addArtist(array){
+    const newObj = {
+      id: 20,
+      name: 'Nate Pace',
+      genre: 'Web Design',
+      nationality: 'American',
+      bio: 'I do not know how to make this clear, but if I told you my backstory we would all be on government watch lists in 12 different countries not including the peoples republic of new congo.',
+    }
+    array.push(newObj);
+    return array;
   }
 
   
@@ -301,8 +310,15 @@ Use lotsOfArt to do the following:
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ... "Albrecht Dürer"]*/
 
-function lotsOfArt(/*Your Code Here*/){
-  /*Your Code Here*/
+function lotsOfArt(array){
+  const newArray = [];
+  for (let i = 0; i < array.length; i++){
+    if(array[i].paintings >= 100){
+     newArray.push(array[i].name);
+    }
+
+  }
+  return newArray;
 }
 
 
