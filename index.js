@@ -246,16 +246,32 @@ Use get20s to do the following:
 Example born in 1901 and died in 1959 - included -- born in 1889 and died in 1925 not included
 If correct, the function should return ["Salvador Dali", "Frida Kahlo"]*/
 
+// function get20s(array){
+//   const newArray = []
+//   for (let i = 0; i < array.length; i++){
+//     if (array[i].years.includes(1907) || (array[i].years.includes(1904)) ){
+//       newArray.push(array[i].name);
+//     }
+//   }
+//   return newArray;
+// }
+// console.log(get20s(artists));
+
 function get20s(array){
-  const newArray = []
+  const newArray = [];
   for (let i = 0; i < array.length; i++){
-    if (array[i].years.includes(1907) || (array[i].years.includes(1904)) ){
-      newArray.push(array[i].name);
-    }
-  }
-  return newArray;
+  const birthyear = array[i].years.split(" - ")[0];
+  const deathyear = array[i].years.split(" - ")[1];
+  if (birthyear >= 1900 && deathyear <= 2000){
+    newArray.push(array[i].name);
+  } 
+  
+
 }
-console.log(get20s(artists));
+  return newArray;
+
+}
+// console.log(get20s(artists));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -346,27 +362,72 @@ The function should console.log 50 chunks of HTML code that match the structure 
 
 ‼️ You do **NOT** need to get these to display on your page, but you can copy and paste the result into your HTML file if you'd like to see what that would look like. */
 
-function getHTML(/* Code here */){
-
-    /* Code here */
-
+function getHTML(data){
+    for (let i = 0; i < data.length; i++){
+      console.log(`
+      <div id="artist">
+<div class="image">
+    <img src="./assets/${data[i].name.split(" ").join("-") + ".jpg"}"/>
+</div>
+<div class = "name">
+   <a href=${data[i].wikipedia}> ${data[i].name}</a>
+</div>
+<div class = "bio">${data[i].bio}</div>
+</div>
+      `)
+    }
+    
   }
-
+// console.log(getHTML(artists));
 
 /* 💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪
 Create a function called `randomize` that takes a data array as an argument and returns a the same array in a randomized order. */
 
-function randomize(/* Code here */){
 
-    /* Code here */
+     function shuffleArray(array) {
+      for (var i = array.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var temp = array[i];
+          array[i] = array[j];
+          array[j] = temp;
+      }
+  
 
-  }
+    return array;
+
+    }
+console.log(shuffleArray(artists));
+  
 
 
  /* 💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪
  Use advanced array methods (.map, .reduce, .filer) to refactor your MVP code (create an array of all artists born in the 1900s with .filter, for example) */
+//  function get20s(array){
+//   const newArray = [];
+//   for (let i = 0; i < array.length; i++){
+//   const birthyear = array[i].years.split(" - ")[0];
+//   const deathyear = array[i].years.split(" - ")[1];
+//   if (birthyear >= 1900 && deathyear <= 2000){
+//     newArray.push(array[i].name);
+//   } 
+  
 
- 
+// }
+//   return newArray;
+
+// }
+
+function get20z(array){
+  
+  return array.filter((el) => {
+    return el['years'].split(" - ")[0] >= "1900" && el['years'].split(" - ")[1]<="2000"
+    
+
+  })
+
+  
+}
+ console.log(get20z(artists));
  
  
  /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑*/
@@ -383,3 +444,8 @@ export default{
   addArtist,
   lotsOfArt
 }
+let counter = 0;
+for (var i = 0; i < 5; i++) {
+  counter += i;
+}
+console.log(counter);
